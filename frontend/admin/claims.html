@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Management</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0d1324;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+            background: #111a30;
+            border-bottom: 1px solid #29344e;
+            padding: 18px 30px;
+            min-height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .header-left h1 {
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .header-left p {
+            color: #8d96aa;
+            margin-top: 5px;
+            font-size: 13px;
+        }
+
+        /* =========================
+           LOGOUT BUTTON
+        ========================= */
+
+        .logout-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            min-width: 105px;
+            height: 40px;
+
+            padding: 0 16px;
+
+            background: #ef4444;
+            color: white;
+
+            border: 1px solid #f87171;
+            border-radius: 8px;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .logout-btn:hover {
+            background: #dc2626;
+            border-color: #ef4444;
+            transform: translateY(-1px);
+        }
+
+        .logout-btn:active {
+            transform: translateY(0);
+        }
+
+        .logout-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .logout-icon {
+            font-size: 17px;
+            line-height: 1;
+        }
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px;
+        }
+
+        /* =========================
+           STATISTICS
+        ========================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: #151d32;
+            border: 1px solid #29344e;
+            border-radius: 12px;
+
+            padding: 20px;
+        }
+
+        .stat-label {
+            color: #8d96aa;
+            font-size: 13px;
+        }
+
+        .stat-value {
+            font-size: 30px;
+            font-weight: bold;
+
+            margin-top: 8px;
+        }
+
+        /* =========================
+           CLAIM SECTION
+        ========================= */
+
+        .table-card {
+            background: #151d32;
+            border: 1px solid #29344e;
+            border-radius: 12px;
+
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 20px;
+
+            border-bottom: 1px solid #29344e;
+        }
+
+        .table-header h2 {
+            font-size: 18px;
+
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           FILTERS
+        ========================= */
+
+        .filters {
+            display: flex;
+            gap: 10px;
+        }
+
+        .search-box,
+        .filter-select {
+            background: #0d1324;
+            border: 1px solid #34405c;
+
+            color: white;
+
+            border-radius: 8px;
+
+            padding: 12px;
+
+            outline: none;
+        }
+
+        .search-box {
+            flex: 1;
+        }
+
+        .filter-select {
+            width: 180px;
+        }
+
+        .search-box:focus,
+        .filter-select:focus {
+            border-color: #287ff0;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 900px;
+        }
+
+        th,
+        td {
+            padding: 15px;
+
+            text-align: left;
+
+            border-bottom: 1px solid #29344e;
+        }
+
+        th {
+            color: #8d96aa;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        .reward {
+            color: #4da3ff;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           VIEW DETAILS BUTTON
+        ========================= */
+
+        .view-button {
+            background: #287ff0;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 7px;
+
+            padding: 8px 12px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .view-button:hover {
+            background: #1d6fd8;
+        }
+
+        /* =========================
+           EMPTY / ERROR
+        ========================= */
+
+        .empty,
+        .error {
+            text-align: center;
+
+            padding: 40px;
+
+            color: #8d96aa;
+        }
+
+        .error {
+            color: #ff6b6b;
+        }
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.7);
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 1000;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-card {
+            width: 100%;
+
+            max-width: 450px;
+
+            background: #151d32;
+
+            border: 1px solid #34405c;
+
+            border-radius: 14px;
+
+            padding: 25px;
+        }
+
+        .modal-card h2 {
+            margin-bottom: 20px;
+        }
+
+        .detail-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #29344e;
+        }
+
+        .detail-label {
+            color: #8d96aa;
+        }
+
+        .detail-value {
+            text-align: right;
+
+            font-weight: bold;
+
+            word-break: break-word;
+        }
+
+        .close-button {
+            width: 100%;
+
+            margin-top: 20px;
+
+            padding: 12px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #242d42;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            background: #303b55;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .header {
+                padding: 16px 20px;
+            }
+
+            .header-left h1 {
+                font-size: 20px;
+            }
+
+            .logout-btn {
+                min-width: 88px;
+
+                height: 38px;
+
+                padding: 0 12px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .filters {
+                flex-direction: column;
+            }
+
+            .filter-select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header class="header">
+
+        <div class="header-left">
+
+            <h1>CLAIM MANAGEMENT</h1>
+
+            <p>
+                Mobile Legends Fan Event Demo
+            </p>
+
+        </div>
+
+        <button type="button" id="logoutButton" class="logout-btn">
+
+            <span class="logout-icon">↪</span>
+
+            <span>LOGOUT</span>
+
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main class="container">
+
+        <!-- STATISTICS -->
+
+        <section class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    TOTAL CLAIMS
+                </div>
+
+                <div class="stat-value" id="totalClaims">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    SKIN CLAIMS
+                </div>
+
+                <div class="stat-value" id="skinClaims">
+                    0
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-label">
+                    DIAMOND CLAIMS
+                </div>
+
+                <div class="stat-value" id="diamondClaims">
+                    0
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CLAIM TABLE -->
+
+        <section class="table-card">
+
+            <div class="table-header">
+
+                <h2>
+                    Submitted Claims
+                </h2>
+
+                <div class="filters">
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        class="search-box"
+                        placeholder="Search ML ID or email..."
+                    >
+
+                    <select
+                        id="rewardFilter"
+                        class="filter-select"
+                    >
+
+                        <option value="all">
+                            All Rewards
+                        </option>
+
+                        <option value="skin">
+                            Skins
+                        </option>
+
+                        <option value="diamonds">
+                            Diamonds
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>
+                                ML User ID
+                            </th>
+
+                            <th>
+                                Server ID
+                            </th>
+
+                            <th>
+                                Reward
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="claimsTable">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="empty"
+                            >
+                                Loading claims...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         DETAILS MODAL
+    ========================= -->
+
+    <div class="modal" id="detailsModal">
+
+        <div class="modal-card">
+
+            <h2>
+                CLAIM DETAILS
+            </h2>
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Claim ID
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailId"
+                >
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    ML User ID
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailMlId"
+                >
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Server ID
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailServerId"
+                >
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Email
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailEmail"
+                >
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Reward Type
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailType"
+                >
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Reward
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailReward"
+                >
+                    —
+                </span>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span class="detail-label">
+                    Submitted
+                </span>
+
+                <span
+                    class="detail-value"
+                    id="detailDate"
+                >
+                    —
+                </span>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="close-button"
+                id="closeModal"
+            >
+                CLOSE
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /*
+        ==================================================
+        PREVENT STALE ADMIN PAGE FROM BEING RESTORED
+        ==================================================
+        */
+
+        // Replace the current history entry.
+        history.replaceState(null, "", window.location.href);
+
+
+        /*
+        If the browser tries to go backward/forward,
+        create a new history entry so the current page
+        remains active until authentication is checked.
+        */
+
+        window.addEventListener("popstate", function () {
+
+            history.pushState(
+                null,
+                "",
+                window.location.href
+            );
+
+            checkAdminSession();
+
+        });
+
+
+        /*
+        ==================================================
+        SESSION CHECK
+        ==================================================
+        */
+
+        async function checkAdminSession() {
+
+            try {
+
+                const response = await fetch(
+                    "https://mlevent.infinityfreeapp.com/backend/claims/get-claims.php",
+                    {
+                        method: "GET",
+                        credentials: "include",
+                        cache: "no-store"
+                    }
+                );
+
+
+                /*
+                Admin session no longer exists.
+                */
+
+                if (response.status === 401) {
+
+                    window.location.replace(
+                        "login.html"
+                    );
+
+                    return false;
+                }
+
+
+                /*
+                Any unexpected server error should not
+                automatically expose the dashboard.
+                */
+
+                if (!response.ok) {
+
+                    window.location.replace(
+                        "login.html"
+                    );
+
+                    return false;
+                }
+
+
+                return true;
+
+            } catch (error) {
+
+                console.error(error);
+
+                window.location.replace(
+                    "login.html"
+                );
+
+                return false;
+            }
+        }
+
+
+        /*
+        ==================================================
+        HANDLE BROWSER BACK/FORWARD CACHE
+        ==================================================
+        */
+
+        window.addEventListener(
+            "pageshow",
+            async function (event) {
+
+                /*
+                event.persisted means the browser restored
+                this page from its back/forward cache.
+                */
+
+                if (event.persisted) {
+
+                    const authenticated =
+                        await checkAdminSession();
+
+
+                    if (authenticated) {
+
+                        loadClaims();
+
+                    }
+
+                }
+
+            }
+        );
+
+
+        /*
+        ==================================================
+        CLAIM DATA
+        ==================================================
+        */
+
+        let claims = [];
+
+
+        /*
+        ==================================================
+        LOAD CLAIMS
+        ==================================================
+        */
+
+        async function loadClaims() {
+
+            const table =
+                document.getElementById(
+                    "claimsTable"
+                );
+
+
+            try {
+
+                const response = await fetch(
+                    "https://mlevent.infinityfreeapp.com/backend/claims/get-claims.php",
+                    {
+                        method: "GET",
+                        credentials: "include",
+                        cache: "no-store"
+                    }
+                );
+
+
+                /*
+                Session expired.
+                */
+
+                if (response.status === 401) {
+
+                    window.location.replace(
+                        "login.html"
+                    );
+
+                    return;
+                }
+
+
+                /*
+                Other server errors.
+                */
+
+                if (!response.ok) {
+
+                    table.innerHTML = `
+                        <tr>
+                            <td
+                                colspan="6"
+                                class="error"
+                            >
+                                Unable to load claims.
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+
+                const result =
+                    await response.json();
+
+
+                if (!result.success) {
+
+                    table.innerHTML = `
+                        <tr>
+                            <td
+                                colspan="6"
+                                class="error"
+                            >
+                                ${escapeHtml(
+                                    result.message ||
+                                    "Unable to load claims."
+                                )}
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+
+                claims =
+                    Array.isArray(result.claims)
+                        ? result.claims
+                        : [];
+
+
+                updateStats();
+
+                displayClaims();
+
+
+            } catch (error) {
+
+                console.error(error);
+
+
+                table.innerHTML = `
+                    <tr>
+                        <td
+                            colspan="6"
+                            class="error"
+                        >
+                            Unable to connect to the server.
+                        </td>
+                    </tr>
+                `;
+
+            }
+
+        }
+
+
+        /*
+        ==================================================
+        UPDATE STATISTICS
+        ==================================================
+        */
+
+        function updateStats() {
+
+            document.getElementById(
+                "totalClaims"
+            ).textContent =
+                claims.length;
+
+
+            document.getElementById(
+                "skinClaims"
+            ).textContent =
+                claims.filter(
+                    claim =>
+                        claim.reward_type === "skin"
+                ).length;
+
+
+            document.getElementById(
+                "diamondClaims"
+            ).textContent =
+                claims.filter(
+                    claim =>
+                        claim.reward_type === "diamonds"
+                ).length;
+
+        }
+
+
+        /*
+        ==================================================
+        DISPLAY CLAIMS
+        ==================================================
+        */
+
+        function displayClaims() {
+
+            const table =
+                document.getElementById(
+                    "claimsTable"
+                );
+
+
+            const search =
+                document.getElementById(
+                    "searchInput"
+                )
+                    .value
+                    .toLowerCase()
+                    .trim();
+
+
+            const filter =
+                document.getElementById(
+                    "rewardFilter"
+                ).value;
+
+
+            const filteredClaims =
+                claims.filter(claim => {
+
+                    const mlUserId =
+                        String(
+                            claim.ml_user_id || ""
+                        )
+                            .toLowerCase();
+
+
+                    const email =
+                        String(
+                            claim.email || ""
+                        )
+                            .toLowerCase();
+
+
+                    const matchesSearch =
+                        mlUserId.includes(search) ||
+                        email.includes(search);
+
+
+                    const matchesFilter =
+                        filter === "all" ||
+                        claim.reward_type === filter;
+
+
+                    return (
+                        matchesSearch &&
+                        matchesFilter
+                    );
+
+                });
+
+
+            if (filteredClaims.length === 0) {
+
+                table.innerHTML = `
+                    <tr>
+                        <td
+                            colspan="6"
+                            class="empty"
+                        >
+                            No claims found.
+                        </td>
+                    </tr>
+                `;
+
+                return;
+            }
+
+
+            table.innerHTML =
+                filteredClaims.map(claim => `
+
+                    <tr>
+
+                        <td>
+                            #${escapeHtml(claim.id)}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(
+                                claim.ml_user_id
+                            )}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(
+                                claim.server_id
+                            )}
+                        </td>
+
+                        <td class="reward">
+                            ${escapeHtml(
+                                claim.reward_name
+                            )}
+                        </td>
+
+                        <td>
+                            ${escapeHtml(
+                                claim.created_at
+                            )}
+                        </td>
+
+                        <td>
+
+                            <button
+                                type="button"
+                                class="view-button"
+                                onclick="viewDetails(${Number(claim.id)})"
+                            >
+                                VIEW DETAILS
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `).join("");
+
+        }
+
+
+        /*
+        ==================================================
+        VIEW DETAILS
+        ==================================================
+        */
+
+        function viewDetails(id) {
+
+            const claim =
+                claims.find(
+                    item =>
+                        Number(item.id) ===
+                        Number(id)
+                );
+
+
+            if (!claim) {
+                return;
+            }
+
+
+            document.getElementById(
+                "detailId"
+            ).textContent =
+                "#" + claim.id;
+
+
+            document.getElementById(
+                "detailMlId"
+            ).textContent =
+                claim.ml_user_id;
+
+
+            document.getElementById(
+                "detailServerId"
+            ).textContent =
+                claim.server_id;
+
+
+            document.getElementById(
+                "detailEmail"
+            ).textContent =
+                claim.email;
+
+
+            document.getElementById(
+                "detailType"
+            ).textContent =
+                claim.reward_type;
+
+
+            document.getElementById(
+                "detailReward"
+            ).textContent =
+                claim.reward_name;
+
+
+            document.getElementById(
+                "detailDate"
+            ).textContent =
+                claim.created_at;
+
+
+            document.getElementById(
+                "detailsModal"
+            ).classList.add("active");
+
+        }
+
+
+        /*
+        ==================================================
+        CLOSE MODAL
+        ==================================================
+        */
+
+        document.getElementById(
+            "closeModal"
+        ).addEventListener(
+            "click",
+            function () {
+
+                document.getElementById(
+                    "detailsModal"
+                ).classList.remove("active");
+
+            }
+        );
+
+
+        document.getElementById(
+            "detailsModal"
+        ).addEventListener(
+            "click",
+            function (event) {
+
+                if (event.target === this) {
+
+                    this.classList.remove(
+                        "active"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /*
+        ==================================================
+        SEARCH
+        ==================================================
+        */
+
+        document.getElementById(
+            "searchInput"
+        ).addEventListener(
+            "input",
+            displayClaims
+        );
+
+
+        /*
+        ==================================================
+        REWARD FILTER
+        ==================================================
+        */
+
+        document.getElementById(
+            "rewardFilter"
+        ).addEventListener(
+            "change",
+            displayClaims
+        );
+
+
+        /*
+        ==================================================
+        LOGOUT
+        ==================================================
+        */
+
+        document.getElementById(
+            "logoutButton"
+        ).addEventListener(
+            "click",
+            async function () {
+
+                const button = this;
+
+
+                const confirmed =
+                    confirm(
+                        "Are you sure you want to logout?"
+                    );
+
+
+                if (!confirmed) {
+                    return;
+                }
+
+
+                button.disabled = true;
+
+                button.innerHTML =
+                    "LOGGING OUT...";
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            "https://mlevent.infinityfreeapp.com/backend/admin/logout.php",
+                            {
+                                method: "POST",
+                                credentials: "include",
+                                cache: "no-store"
+                            }
+                        );
+
+
+                    const result =
+                        await response.json();
+
+
+                    if (result.success) {
+
+                        /*
+                        Replace instead of href.
+                        This prevents the login page from
+                        adding another history entry.
+                        */
+
+                        window.location.replace(
+                            "login.html"
+                        );
+
+                        return;
+                    }
+
+
+                    alert(
+                        result.message ||
+                        "Unable to logout."
+                    );
+
+
+                    button.disabled = false;
+
+                    button.innerHTML =
+                        '<span class="logout-icon">↪</span>' +
+                        '<span>LOGOUT</span>';
+
+
+                } catch (error) {
+
+                    console.error(error);
+
+
+                    /*
+                    Even if the request fails,
+                    do not keep the admin dashboard
+                    visible.
+                    */
+
+                    window.location.replace(
+                        "login.html"
+                    );
+
+                }
+
+            }
+        );
+
+
+        /*
+        ==================================================
+        HTML ESCAPE
+        ==================================================
+        */
+
+        function escapeHtml(value) {
+
+            return String(value ?? "")
+
+                .replace(
+                    /&/g,
+                    "&amp;"
+                )
+
+                .replace(
+                    /</g,
+                    "&lt;"
+                )
+
+                .replace(
+                    />/g,
+                    "&gt;"
+                )
+
+                .replace(
+                    /"/g,
+                    "&quot;"
+                )
+
+                .replace(
+                    /'/g,
+                    "&#039;"
+                );
+
+        }
+
+
+        /*
+        ==================================================
+        START
+        ==================================================
+        */
+
+        (async function () {
+
+            const authenticated =
+                await checkAdminSession();
+
+
+            if (authenticated) {
+
+                loadClaims();
+
+            }
+
+        })();
+
+    </script>
+
+</body>
+
+</html>
