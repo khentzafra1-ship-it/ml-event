@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Claim Successful</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #050505;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+
+            background: #111;
+
+            border: 1px solid #292929;
+            border-radius: 18px;
+
+            padding: 40px 28px;
+
+            text-align: center;
+
+            animation: reveal 0.7s ease;
+        }
+
+        @keyframes reveal {
+            from {
+                opacity: 0;
+                transform: scale(.85);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .message {
+            color: #aaa;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .success-box {
+            background: #191919;
+            border: 1px solid #333;
+
+            border-radius: 12px;
+
+            padding: 20px;
+
+            margin-bottom: 25px;
+        }
+
+        .success-box h2 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .success-box p {
+            color: #aaa;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .selected {
+            margin-top: 18px;
+
+            padding: 14px;
+
+            background: #090909;
+
+            border-radius: 8px;
+
+            color: #ddd;
+
+            font-size: 13px;
+
+            border: 1px solid #252525;
+        }
+
+        .button {
+            display: inline-block;
+
+            padding: 13px 25px;
+
+            background: #fff;
+            color: #000;
+
+            border-radius: 9px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: .2s;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .small {
+            margin-top: 25px;
+
+            color: #555;
+
+            font-size: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="icon">
+            🎉
+        </div>
+
+        <h1>
+            CONGRATULATIONS!
+        </h1>
+
+        <p class="message">
+            Your reward claim has been successfully submitted.
+        </p>
+
+        <div class="success-box">
+
+            <h2>
+                🎁 CLAIM SUCCESSFUL
+            </h2>
+
+            <p>
+                Your selected reward has been successfully
+                registered for your account.
+            </p>
+
+            <br>
+
+            <p>
+                Please check your Mobile Legends account
+                to verify the reward you claimed.
+            </p>
+
+            <div class="selected" id="reward">
+                Reward selected
+            </div>
+
+        </div>
+
+        <a href="index.html" class="button">
+            BACK TO EVENT
+        </a>
+
+        <p class="small">
+            Please allow some time for the reward status to update.
+        </p>
+
+    </div>
+
+
+    <script>
+
+        const params = new URLSearchParams(window.location.search);
+        const rewardFromUrl = params.get("reward");
+        const reward = (rewardFromUrl && rewardFromUrl.trim() !== "")
+            ? rewardFromUrl
+            : (sessionStorage.getItem("claimedReward") ||
+                sessionStorage.getItem("selectedReward"));
+        const rewardElement = document.getElementById("reward");
+
+        if (reward && reward.trim() !== "") {
+            rewardElement.textContent = "Reward: " + reward;
+        } else {
+            rewardElement.textContent = "Reward information unavailable.";
+        }
+
+    </script>
+
+</body>
+
+</html>
