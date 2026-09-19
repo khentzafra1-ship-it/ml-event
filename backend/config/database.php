@@ -1,10 +1,10 @@
 <?php
 
 $host = getenv("DB_HOST");
+$port = getenv("DB_PORT") ?: "3306";
 $dbname = getenv("DB_NAME");
 $username = getenv("DB_USER");
 $password = getenv("DB_PASSWORD");
-$port = getenv("DB_PORT") ?: "3306";
 
 try {
 
