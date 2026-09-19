@@ -1,0 +1,217 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: #0b0b0f;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 520px;
+    text-align: center;
+
+    background: #15151b;
+    border: 1px solid #292932;
+    border-radius: 20px;
+
+    padding: 40px 30px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.event-badge {
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    border-radius: 20px;
+
+    background: #202027;
+    border: 1px solid #363640;
+
+    color: #aaa;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 30px;
+}
+
+.loader-wrapper {
+    width: 120px;
+    height: 120px;
+
+    margin: 0 auto 30px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loader {
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    border: 5px solid #25252d;
+    border-top: 5px solid #4da3ff;
+
+    animation: spin 1s linear infinite;
+}
+
+.reward-icon {
+    font-size: 42px;
+
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+#statusMessage {
+    color: #999;
+    font-size: 14px;
+    line-height: 1.5;
+
+    margin-bottom: 28px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 8px;
+
+    background: #28282f;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+
+    background: #4da3ff;
+
+    border-radius: 20px;
+
+    transition: width 0.4s ease;
+}
+
+.progress-text {
+    margin-top: 8px;
+
+    text-align: right;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+.status-list {
+    text-align: left;
+
+    margin-top: 30px;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 13px 0;
+
+    color: #555;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid #222229;
+
+    transition: 0.3s;
+}
+
+.status-item.active {
+    color: #ffffff;
+}
+
+.status-item.completed {
+    color: #8fd18f;
+}
+
+.status-icon {
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #25252c;
+
+    font-size: 12px;
+}
+
+.status-item.completed .status-icon {
+    background: #203820;
+    color: #8fd18f;
+}
+
+.notice {
+    margin-top: 30px;
+
+    color: #666;
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+
+    .container {
+        padding: 30px 20px;
+    }
+
+    h1 {
+        font-size: 21px;
+    }
+
+}
