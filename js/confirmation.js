@@ -36,7 +36,7 @@ document.getElementById("confirmButton").addEventListener("click", async functio
     try {
 
         const response = await fetch(
-            "../../backend/claims/submit.php",
+            "https://mlevent.infinityfreeapp.com/backend/claims/submit.php",
             {
                 method: "POST",
 
