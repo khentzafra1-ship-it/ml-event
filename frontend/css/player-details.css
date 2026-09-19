@@ -1,0 +1,423 @@
+/* =========================================
+   PLAYER DETAILS PAGE
+========================================= */
+
+.details-page {
+
+    width: 100%;
+    max-width: 650px;
+
+    margin: auto;
+
+    padding: 30px 20px 60px;
+
+    position: relative;
+}
+
+
+/* =========================================
+   BACK
+========================================= */
+
+.back-button {
+
+    display: inline-block;
+
+    padding: 9px 15px;
+
+    margin-bottom: 25px;
+
+    border: 1px solid #53627b;
+
+    background: #101827;
+
+    color: #aebbd0;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+}
+
+.back-button:hover {
+
+    color: #e0c45e;
+
+    border-color: #927a3d;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.details-header {
+
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.title-decoration {
+
+    color: #d6b957;
+
+    font-size: 12px;
+
+    margin-bottom: 8px;
+}
+
+.details-header small {
+
+    font-family: Arial, sans-serif;
+
+    color: #8191ac;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+.details-header h1 {
+
+    margin-top: 10px;
+
+    font-size: 45px;
+
+    line-height: .9;
+}
+
+.details-header h1 span {
+
+    display: block;
+
+    color: #e2c45d;
+
+    letter-spacing: 4px;
+}
+
+.details-header p {
+
+    max-width: 440px;
+
+    margin: 18px auto 0;
+
+    color: #8997ac;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   SELECTED REWARD
+========================================= */
+
+.selected-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 18px;
+
+    margin-bottom: 25px;
+
+    background:
+        linear-gradient(90deg,
+            #17243a,
+            #0d1523);
+
+    border: 1px solid #78683b;
+
+    box-shadow:
+        0 0 20px rgba(214, 184, 82, .08);
+}
+
+.selected-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid #a58a42;
+
+    color: #e3c45c;
+
+    font-size: 25px;
+
+    background: #0c1422;
+}
+
+.selected-box small {
+
+    font-family: Arial, sans-serif;
+
+    color: #77869d;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+.selected-box h2 {
+
+    margin-top: 5px;
+
+    color: #e3c45d;
+
+    font-size: 18px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+#playerForm {
+
+    padding: 25px;
+
+    background:
+        linear-gradient(180deg,
+            #121d2e,
+            #0b111c);
+
+    border: 1px solid #35445f;
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group {
+
+    margin-bottom: 22px;
+}
+
+.form-group label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #d9bc59;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+.form-group input {
+
+    width: 100%;
+
+    height: 48px;
+
+    padding: 0 14px;
+
+    outline: none;
+
+    border: 1px solid #465773;
+
+    background: #080f1b;
+
+    color: white;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    transition: .2s;
+}
+
+.form-group input::placeholder {
+
+    color: #526078;
+}
+
+.form-group input:focus {
+
+    border-color: #b69a49;
+
+    box-shadow:
+        0 0 12px rgba(197, 165, 72, .1);
+}
+
+.form-group>small {
+
+    display: block;
+
+    margin-top: 6px;
+
+    color: #65738a;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+}
+
+
+/* =========================================
+   PRIVACY NOTICE
+========================================= */
+
+.privacy-notice {
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+
+    padding: 14px;
+
+    margin: 5px 0 20px;
+
+    background: #151b27;
+
+    border: 1px solid #4a4330;
+}
+
+.notice-icon {
+
+    width: 28px;
+
+    height: 28px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid #a08743;
+
+    color: #d6b854;
+
+    font-family: Arial, sans-serif;
+
+    font-weight: bold;
+}
+
+.privacy-notice p {
+
+    color: #808c9e;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    .details-page {
+
+        padding: 20px 12px 45px;
+    }
+
+    .details-header h1 {
+
+        font-size: 38px;
+    }
+
+    #playerForm {
+
+        padding: 18px;
+    }
+
+    .selected-box {
+
+        padding: 14px;
+    }
+
+    .selected-icon {
+
+        width: 45px;
+
+        height: 45px;
+
+        font-size: 20px;
+    }
+
+    .continue-btn {
+        width: 100%;
+        height: 50px;
+        margin-top: 20px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        border: 1px solid #333;
+        border-radius: 4px;
+
+        background: #222;
+        color: #666;
+
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 1px;
+
+        cursor: not-allowed;
+        transition: 0.25s ease;
+    }
+
+    /* Arrow */
+    .continue-btn b {
+        font-size: 22px;
+        font-weight: 400;
+    }
+
+
+    /* =========================
+   ACTIVE BUTTON
+========================= */
+
+    .continue-btn.active {
+        background: #e5b82e;
+        border-color: #e5b82e;
+        color: #050505;
+        cursor: pointer;
+    }
+
+    .continue-btn.active:hover {
+        background: #f3c83b;
+    }
+
+
+    /* Disabled */
+    .continue-btn:disabled {
+        opacity: 1;
+    }
+
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Processing Claim</title>
+
+    <link rel="stylesheet" href="css/processing.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="event-badge">
+            Processing...
+        </div>
+
+        <div class="loader-wrapper">
+            <div class="loader"></div>
+            <div class="reward-icon"><i class="fa-solid fa-gift"></i></div>
+        </div>
+
+        <h1 id="statusTitle">Checking Submitted Details...</h1>
+
+        <p id="statusMessage">
+            Please wait while we process your demo claim.
+        </p>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <div class="progress-text">
+            <span id="progressPercent">0%</span>
+        </div>
+
+        <div class="status-list">
+
+            <div class="status-item active" id="step1">
+                <span class="status-icon">✓</span>
+                <span>Checking submitted details</span>
+            </div>
+
+            <div class="status-item" id="step2">
+                <span class="status-icon">○</span>
+                <span>Preparing your reward</span>
+            </div>
+
+            <div class="status-item" id="step3">
+                <span class="status-icon">○</span>
+                <span>Finalizing the details</span>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script src="js/processing.js"></script>
+
+</body>
+</html>

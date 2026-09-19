@@ -1,0 +1,1642 @@
+/* =========================================================
+   MOBILE LEGENDS FAN EVENT
+   COMPLETE STYLE SHEET
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    background: #050a12;
+
+    color: #ffffff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+    width: 100%;
+    height: 88px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 4%;
+
+    background:
+        rgba(5, 10, 17, 0.97);
+
+    border-bottom:
+        1px solid rgba(130, 145, 170, 0.18);
+
+    z-index: 100;
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo-link {
+    width: 250px;
+
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 220px;
+    height: auto;
+
+    display: block;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.navigation {
+    position: absolute;
+
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 55px;
+}
+
+.nav-link {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    padding-top: 2px;
+
+    color: #8f98a8;
+
+    font-size: 15px;
+
+    letter-spacing: 1px;
+
+    transition:
+        color 0.25s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+}
+
+.nav-link.active {
+    color: #f4d47a;
+}
+
+.nav-link.active::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+
+    bottom: 20px;
+
+    height: 2px;
+
+    background:
+        #f4d47a;
+
+    box-shadow:
+        0 0 8px rgba(244, 212, 122, 0.3);
+}
+
+
+/* =========================================================
+   HEADER CLAIM BUTTON
+   ========================================================= */
+
+.header-claim {
+    margin-left: auto;
+
+    min-width: 225px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    border:
+        1px solid #f1d477;
+
+    border-radius: 11px;
+
+    background:
+        rgba(9, 14, 22, 0.35);
+
+    color: #f5d982;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    box-shadow:
+        0 0 20px rgba(244, 210, 115, 0.08);
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.header-claim:hover {
+    background:
+        rgba(244, 210, 115, 0.08);
+
+    box-shadow:
+        0 0 25px rgba(244, 210, 115, 0.2);
+
+    transform:
+        translateY(-2px);
+}
+
+.gift {
+    font-size: 21px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+    width: 100%;
+
+    height: 575px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        #050b14;
+}
+
+
+/* =========================================================
+   HERO WALLPAPER
+   wallpaper.webp is the deepest background
+   ========================================================= */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background-image:
+        url("../images/wallpaper.jpg");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
+    /*
+        Transparency of the wallpaper.
+        Increase to 0.55 if you want it more visible.
+    */
+
+    opacity: 0.72;
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO DARK ATMOSPHERIC OVERLAY
+   ========================================================= */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(90deg,
+            rgba(3, 8, 15, 0.90) 0%,
+            rgba(3, 8, 15, 0.70) 30%,
+            rgba(3, 8, 15, 0.30) 58%,
+            rgba(3, 8, 15, 0.48) 100%);
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO EXTRA OVERLAY
+   This creates the dark area behind the text.
+   ========================================================= */
+
+.hero-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(90deg,
+            rgba(1, 5, 10, 0.72) 0%,
+            rgba(1, 5, 10, 0.42) 38%,
+            rgba(1, 5, 10, 0.08) 70%,
+            rgba(1, 5, 10, 0.28) 100%);
+
+    z-index: 2;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.hero-content {
+    position: absolute;
+
+    left: 5.2%;
+    top: 72px;
+
+    width: 540px;
+
+    z-index: 6;
+}
+
+
+/* =========================================================
+   SPECIAL EVENT BADGE
+   ========================================================= */
+
+.event-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        10px 24px;
+
+    margin-bottom: 23px;
+
+    border:
+        1px solid #e6c764;
+
+    border-radius: 10px;
+
+    background:
+        rgba(9, 15, 24, 0.45);
+
+    color: #f5d77f;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    backdrop-filter:
+        blur(4px);
+
+    -webkit-backdrop-filter:
+        blur(4px);
+
+    box-shadow:
+        0 0 18px rgba(230, 199, 100, 0.06);
+}
+
+.event-badge span {
+    font-size: 17px;
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.hero-content h1 {
+    font-size: 62px;
+
+    line-height: 0.98;
+
+    letter-spacing: -2px;
+
+    font-weight: 900;
+
+    color: #ffe8a8;
+
+    text-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.8),
+        0 0 30px rgba(0, 0, 0, 0.35);
+}
+
+.hero-content h1 span {
+    display: block;
+
+    color: #dcecff;
+
+    text-shadow:
+        0 0 25px rgba(76, 147, 255, 0.35),
+        0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+
+/* =========================================================
+   HERO SUBTITLE
+   ========================================================= */
+
+.hero-content h2 {
+    margin-top: 14px;
+
+    font-size: 27px;
+
+    line-height: 1.2;
+
+    letter-spacing: 6px;
+
+    color: #e8ebf1;
+
+    font-weight: 500;
+
+    text-shadow:
+        0 3px 15px rgba(0, 0, 0, 0.8);
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+.hero-content p {
+    width: 520px;
+
+    margin-top: 21px;
+
+    color: #b8c1cf;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+
+/* =========================================================
+   MAIN CLAIM BUTTON
+   ========================================================= */
+
+.claim-button {
+    width: 410px;
+    height: 74px;
+
+    margin-top: 30px;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        0 30px;
+
+    gap: 17px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(135deg,
+            #ffe8a3 0%,
+            #f2ca69 100%);
+
+    color: #10141b;
+
+    font-size: 18px;
+
+    font-weight: 900;
+
+    letter-spacing: 0.5px;
+
+    box-shadow:
+        0 10px 30px rgba(237, 195, 85, 0.22);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.claim-button:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(237, 195, 85, 0.38);
+}
+
+.button-gift {
+    font-size: 24px;
+}
+
+.claim-button .arrow {
+    margin-left: auto;
+
+    font-size: 32px;
+
+    line-height: 0;
+}
+
+
+/* =========================================================
+   HERO.JPEG CHARACTER
+   This image sits ABOVE wallpaper.webp
+   ========================================================= */
+
+.hero-character {
+    position: absolute;
+
+    right: -30px;
+    bottom: 35px;
+
+    width: 850px;
+    height: 610px;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    z-index: 4;
+
+    overflow: hidden;
+
+    border-radius: 75px;
+
+    pointer-events: none;
+}
+
+.hero-character img {
+    width: 80%;
+    height: 80%;
+
+    object-fit: contain;
+    object-position: center bottom;
+
+    opacity: 0.94;
+
+    border-radius: 50px;
+
+    filter:
+        drop-shadow(0 10px 30px rgba(0, 0, 0, 0.7));
+}
+
+
+/* =========================================================
+   PLAY LEGENDARY IMAGE
+   ========================================================= */
+
+.legendary {
+    position: absolute;
+
+    right: 4.5%;
+    bottom: 48px;
+
+    width: 230px;
+
+    z-index: 7;
+
+    transform:
+        rotate(-7deg);
+
+    pointer-events: none;
+}
+
+.legendary img {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    filter:
+        drop-shadow(2px 3px 0 rgba(70, 45, 10, 0.8)) drop-shadow(0 0 12px rgba(235, 190, 80, 0.2));
+}
+
+
+/* =========================================================
+   REWARDS SECTION
+   HERO.JPEG / BACKGROUND CONTINUES HERE
+   ========================================================= */
+
+.rewards {
+    width: 100%;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    padding:
+        25px 5% 55px;
+
+    /*
+        Continue the hero.jpeg artwork
+        behind the reward cards.
+    */
+
+    background-image:
+        url("../images/hero.jpeg");
+
+    background-size:
+        cover;
+
+    background-position:
+        center 70%;
+
+    background-repeat:
+        no-repeat;
+}
+
+
+/* =========================================================
+   REWARDS MAIN DARK OVERLAY
+   ========================================================= */
+
+.rewards::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(3, 8, 15, 0.58);
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   REWARDS GRADIENT
+   ========================================================= */
+
+.rewards::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(180deg,
+            rgba(3, 8, 15, 0.12) 0%,
+            rgba(3, 8, 15, 0.30) 45%,
+            rgba(3, 8, 15, 0.78) 100%);
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   REWARD CARD
+   ========================================================= */
+
+.reward-card {
+    position: relative;
+
+    z-index: 3;
+
+    overflow: hidden;
+
+    border:
+        1px solid rgba(89, 119, 164, 0.48);
+
+    border-radius: 14px;
+
+    /*
+        Semi-transparent.
+        This is important for the reference effect.
+    */
+
+    background:
+        rgba(6, 12, 22, 0.68);
+
+    backdrop-filter:
+        blur(3px);
+
+    -webkit-backdrop-filter:
+        blur(3px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.48);
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* =========================================================
+   REWARD CARD HOVER
+   ========================================================= */
+
+.reward-card:hover {
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(224, 188, 92, 0.8);
+
+    background:
+        rgba(6, 12, 22, 0.75);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.6),
+        0 0 22px rgba(218, 177, 77, 0.08);
+}
+
+
+/* =========================================================
+   REWARD IMAGE
+   ========================================================= */
+
+
+.reward-image {
+    width: 100%;
+    height: 135px;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* =========================================================
+   REWARD IMAGE DARK FADE
+   ========================================================= */
+
+.reward-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(180deg,
+            rgba(0, 0, 0, 0.04) 0%,
+            rgba(3, 8, 15, 0.15) 35%,
+            rgba(3, 8, 15, 0.92) 100%);
+}
+
+
+/* =========================================================
+   REWARD CONTENT
+   ========================================================= */
+
+.reward-content {
+    position: relative;
+
+    z-index: 4;
+
+    min-height: 85px;
+
+    padding:
+        13px 10px 16px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(rgba(7, 13, 23, 0.88),
+            rgba(4, 9, 17, 0.94));
+}
+
+
+/* =========================================================
+   REWARD TITLE
+   ========================================================= */
+
+.reward-content h3 {
+    color: #ffffff;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* =========================================================
+   REWARD DESCRIPTION
+   ========================================================= */
+
+.reward-content p {
+    margin-top: 8px;
+
+    color: #aeb7c6;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   INFO BAR
+   HERO.JPEG CONTINUES BEHIND THIS AREA
+   ========================================================= */
+
+.info-bar {
+    width: 100%;
+
+    min-height: 105px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 50px;
+
+    border-top:
+        1px solid rgba(72, 86, 108, 0.35);
+
+    border-bottom:
+        1px solid rgba(72, 86, 108, 0.35);
+
+    background-image:
+        url("../images/hero.jpeg");
+
+    background-size:
+        cover;
+
+    background-position:
+        center 90%;
+
+    background-repeat:
+        no-repeat;
+}
+
+
+/* =========================================================
+   INFO BAR OVERLAY
+   ========================================================= */
+
+.info-bar::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(3, 8, 15, 0.84);
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   INFO ITEM
+   ========================================================= */
+
+.info-item {
+    width: 330px;
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   INFO ICON
+   ========================================================= */
+
+.info-icon {
+    width: 54px;
+    height: 54px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 50px;
+}
+
+
+/* =========================================================
+   INFO TITLE
+   ========================================================= */
+
+.info-item h3 {
+    color: #d8dde6;
+
+    font-size: 16px;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   INFO DESCRIPTION
+   ========================================================= */
+
+.info-item p {
+    margin-top: 7px;
+
+    color: #8791a1;
+
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   INFO DIVIDER
+   ========================================================= */
+
+.info-line {
+    width: 1px;
+    height: 50px;
+
+    flex-shrink: 0;
+
+    position: relative;
+
+    z-index: 2;
+
+    background:
+        rgba(72, 86, 108, 0.55);
+}
+
+
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
+.about {
+    width: 100%;
+
+    padding:
+        30px 20px;
+
+    text-align: center;
+
+    background:
+        #060a10;
+
+    border-top:
+        1px solid rgba(60, 72, 91, 0.15);
+}
+
+.about p {
+    color: #596372;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    width: 100%;
+
+    min-height: 75px;
+
+    padding:
+        15px 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background:
+        #05080d;
+
+    border-top:
+        1px solid #171e28;
+}
+
+footer img {
+    width: 145px;
+
+    height: auto;
+}
+
+footer span {
+    color: #505968;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   LARGE SCREEN
+   ========================================================= */
+
+@media (min-width: 1400px) {
+
+    .hero {
+        height: 610px;
+    }
+
+    .hero-content {
+        left: 5.2%;
+
+        top: 72px;
+
+        width: 590px;
+    }
+
+    .hero-content h1 {
+        font-size: 68px;
+    }
+
+    .hero-content h2 {
+        font-size: 29px;
+    }
+
+    .hero-character {
+        width: 930px;
+
+        height: 660px;
+
+        right: -40px;
+    }
+
+    .rewards {
+        padding-left: 5.2%;
+        padding-right: 5.2%;
+    }
+}
+
+
+/* =========================================================
+   LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .navigation {
+        gap: 35px;
+    }
+
+    .logo-link {
+        width: 205px;
+    }
+
+    .logo {
+        width: 180px;
+    }
+
+    .header-claim {
+        min-width: 185px;
+    }
+
+    .hero-content {
+        left: 4%;
+
+        width: 500px;
+    }
+
+    .hero-content h1 {
+        font-size: 55px;
+    }
+
+    .hero-content h2 {
+        font-size: 23px;
+
+        letter-spacing: 4px;
+    }
+
+    .hero-content p {
+        width: 480px;
+    }
+
+    .hero-character {
+        width: 760px;
+
+        right: -130px;
+    }
+
+    .legendary {
+        right: 2%;
+
+        width: 200px;
+    }
+
+    .rewards {
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .info-bar {
+        gap: 25px;
+    }
+
+    .info-item {
+        width: 290px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    /* HEADER */
+
+    .header {
+        height: 78px;
+
+        padding:
+            0 25px;
+    }
+
+    .logo-link {
+        width: auto;
+    }
+
+    .logo {
+        width: 165px;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .header-claim {
+        min-width: 165px;
+
+        height: 50px;
+
+        font-size: 13px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        height: 620px;
+    }
+
+    .hero-content {
+        left: 5%;
+
+        top: 55px;
+
+        width: 90%;
+    }
+
+    .hero-content h1 {
+        font-size: 50px;
+    }
+
+    .hero-content h2 {
+        font-size: 20px;
+
+        letter-spacing: 3px;
+    }
+
+    .hero-content p {
+        width: 65%;
+
+        font-size: 15px;
+    }
+
+    .hero-character {
+        width: 700px;
+
+        height: 570px;
+
+        right: -230px;
+
+        bottom: -40px;
+
+        opacity: 0.72;
+    }
+
+    .legendary {
+        display: none;
+    }
+
+
+    /* REWARDS */
+
+    .rewards {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        padding:
+            35px 4% 45px;
+    }
+
+
+    /* INFO */
+
+    .info-bar {
+        gap: 20px;
+    }
+
+    .info-item {
+        width: 30%;
+
+        gap: 12px;
+    }
+
+    .info-icon {
+        width: 45px;
+
+        font-size: 50px;
+    }
+
+    .info-item h3 {
+        font-size: 14px;
+    }
+
+    .info-item p {
+        font-size: 12px;
+    }
+}
+
+
+/* =========================================================
+   SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero {
+        height: 630px;
+    }
+
+    .hero-content {
+        left: 25px;
+
+        top: 45px;
+
+        width:
+            calc(100% - 50px);
+    }
+
+    .hero-content h1 {
+        font-size: 44px;
+    }
+
+    .hero-content h2 {
+        font-size: 17px;
+
+        letter-spacing: 2px;
+    }
+
+    .hero-content p {
+        width: 70%;
+
+        font-size: 14px;
+    }
+
+    .claim-button {
+        width: 350px;
+
+        max-width: 100%;
+    }
+
+    .hero-character {
+        right: -270px;
+
+        width: 700px;
+
+        opacity: 0.48;
+    }
+
+    .rewards {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 14px;
+    }
+
+    .info-bar {
+        flex-direction: column;
+
+        padding:
+            30px 25px;
+
+        gap: 25px;
+    }
+
+    .info-item {
+        width: 100%;
+
+        max-width: 400px;
+    }
+
+    .info-line {
+        width: 80%;
+
+        height: 1px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 550px) {
+
+    /* HEADER */
+
+    .header {
+        height: 70px;
+
+        padding:
+            0 15px;
+    }
+
+    .logo {
+        width: 135px;
+    }
+
+    .header-claim {
+        min-width: 120px;
+
+        height: 44px;
+
+        padding:
+            0 10px;
+
+        gap: 6px;
+
+        font-size: 10px;
+    }
+
+    .gift {
+        font-size: 15px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        height: 620px;
+    }
+
+    .hero-content {
+        left: 20px;
+
+        top: 38px;
+
+        width:
+            calc(100% - 40px);
+    }
+
+    .event-badge {
+        padding:
+            8px 15px;
+
+        margin-bottom: 18px;
+
+        font-size: 11px;
+    }
+
+    .event-badge span {
+        font-size: 13px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+
+        letter-spacing: -1px;
+    }
+
+    .hero-content h2 {
+        margin-top: 12px;
+
+        font-size: 14px;
+
+        letter-spacing: 1.8px;
+    }
+
+    .hero-content p {
+        width: 100%;
+
+        margin-top: 17px;
+
+        font-size: 13px;
+
+        line-height: 1.6;
+    }
+
+    .claim-button {
+        width: 100%;
+
+        height: 60px;
+
+        margin-top: 25px;
+
+        padding:
+            0 20px;
+
+        font-size: 14px;
+    }
+
+    .button-gift {
+        font-size: 20px;
+    }
+
+    .claim-button .arrow {
+        font-size: 26px;
+    }
+
+
+    /* MOBILE HERO CHARACTER */
+
+    .hero-character {
+        width: 650px;
+
+        height: 540px;
+
+        right: -315px;
+
+        bottom: -45px;
+
+        opacity: 0.38;
+    }
+
+
+    /* REWARDS */
+
+    .rewards {
+        grid-template-columns:
+            1fr;
+
+        gap: 15px;
+
+        padding:
+            35px 20px 45px;
+
+        background-position:
+            center 60%;
+    }
+
+    .reward-card {
+        min-height: 210px;
+    }
+
+    .reward-image {
+        height: 150px;
+    }
+
+    .reward-content {
+        min-height: 80px;
+    }
+
+    .reward-content h3 {
+        font-size: 17px;
+    }
+
+    .reward-content p {
+        font-size: 13px;
+    }
+
+
+    /* INFO */
+
+    .info-bar {
+        padding:
+            30px 20px;
+    }
+
+    .info-item {
+        max-width: 100%;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding:
+            15px 20px;
+    }
+
+    footer img {
+        width: 120px;
+    }
+
+    footer span {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .logo {
+        width: 120px;
+    }
+
+    .header-claim {
+        min-width: 110px;
+
+        font-size: 9px;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .hero-content h2 {
+        font-size: 12px;
+
+        letter-spacing: 1.5px;
+    }
+
+    .hero-content p {
+        font-size: 12px;
+    }
+
+    .claim-button {
+        height: 55px;
+
+        font-size: 12px;
+    }
+
+    .hero-character {
+        right: -350px;
+
+        opacity: 0.3;
+    }
+
+    .about-icon {
+        width: 50px;
+        height: 50px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #f2ce72;
+
+        font-size: 25px;
+
+        border:
+            1px solid rgba(242, 206, 114, 0.35);
+
+        border-radius: 10px;
+
+        background:
+            rgba(242, 206, 114, 0.06);
+    }
+
+    .about-icon i {
+        color: #f2ce72;
+    }
+    .reward-option:nth-child(1) .reward-info {
+        background: rgba(103, 199, 255, 0.15) !important;
+    }
+
+    /* EPIC */
+    .reward-option:nth-child(2) .reward-info {
+        background: rgba(155, 89, 255, 0.15) !important;
+    }
+    
+    
+
+    
+}
+
+
+/* =========================================================
+   OPTIONAL: STRONGER BACKGROUND BLENDING
+   ========================================================= */
+
+/*
+   If you want the wallpaper to be MORE visible:
+
+   .hero::before {
+       opacity: 0.55;
+   }
+
+   If you want it MORE subtle:
+
+   .hero::before {
+       opacity: 0.30;
+   }
+*/
+
+
+/* =========================================================
+   OPTIONAL: STRONGER REWARD BACKGROUND
+   ========================================================= */
+
+/*
+   If you want hero.jpeg more visible behind the
+   reward cards:
+
+   .rewards::before {
+       background: rgba(3, 8, 15, 0.45);
+   }
+
+   If you want it darker:
+
+   .rewards::before {
+       background: rgba(3, 8, 15, 0.70);
+   }
+*/

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Select Reward - ML Event Demo</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/rewards.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         HEADER / NAVIGATION
+         ========================================= -->
+
+    <header class="header">
+
+        <div class="brand">
+            <img src="images/ml.png" alt="Mobile Legends" class="logo">
+        </div>
+
+        <div class="header-right">
+
+            <button class="menu-btn" type="button">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN SELECT REWARD PAGE
+         ========================================= -->
+
+    <main class="reward-page">
+
+
+        <!-- =====================================
+             PAGE TITLE
+             ===================================== -->
+
+        <section class="reward-header">
+
+            <div class="back-button" onclick="location.href='index.html'">
+                ‹ BACK
+            </div>
+
+            <div class="title-decoration">
+                ◆
+            </div>
+
+            <small>
+                LIMITED EVENT
+            </small>
+
+            <h1>
+                SELECT YOUR
+                <span>REWARD</span>
+            </h1>
+
+            <p>
+                Choose one reward from the available
+                event rewards below.
+            </p>
+
+        </section>
+
+
+        <!-- =====================================
+             REWARD GRID
+             ===================================== -->
+
+        <section class="reward-grid">
+
+
+            <!-- =================================
+                 EPIC SKIN
+                 ================================= -->
+
+            <article class="reward-option" data-reward="Epic Skin" data-type="skin" style="
+                    border: 2px solid #9b59ff;
+                    box-shadow:
+                        0 0 20px rgba(155, 89, 255, 0.25);
+                ">
+
+                <div class="reward-image epic">
+
+                    <img src="images/random.jpg" alt="Epic Hero Skin">
+
+                    <div class="rarity-label">
+                        EPIC
+                    </div>
+
+                    <div class="image-glow"></div>
+
+                </div>
+
+
+                <div class="reward-info" style="
+                        background:
+                            rgba(155, 89, 255, 0.15);
+                    ">
+
+                    <div>
+
+                        <small>
+                            SKIN REWARD
+                        </small>
+
+                        <h2>
+                            Random Epic Skin
+                        </h2>
+
+                        <p>
+                            Limited event skin
+                        </p>
+
+                    </div>
+
+                    <div class="select-circle">
+                        ✓
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 SPECIAL SKIN
+                 ================================= -->
+
+            <article class="reward-option" data-reward="Special Skin" data-type="skin" style="
+                    border: 2px solid #67c7ff;
+                    box-shadow:
+                        0 0 20px rgba(103, 199, 255, 0.25);
+                ">
+
+                <!-- FIXED: special instead of epic -->
+
+                <div class="reward-image special">
+
+                    <img src="images/special.jpg" alt="Special Hero Skin">
+
+                    <div class="rarity-label">
+                        SPECIAL
+                    </div>
+
+                    <div class="image-glow"></div>
+
+                </div>
+
+
+                <div class="reward-info" style="
+                        background:
+                            rgba(103, 199, 255, 0.15);
+                    ">
+
+                    <div>
+
+                        <small>
+                            SKIN REWARD
+                        </small>
+
+                        <h2>
+                            Random Special Skin
+                        </h2>
+
+                        <p>
+                            Limited event skin
+                        </p>
+
+                    </div>
+
+                    <div class="select-circle">
+                        ✓
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 500 DIAMONDS
+                 ================================= -->
+
+            <article class="reward-option" data-reward="100 Diamonds" data-type="diamonds">
+
+                <div class="reward-image diamonds">
+                    <img src="images/diamonds.png" alt="500 Diamonds">
+                    <div class="rarity-label">REWARD</div>
+                </div>
+
+
+                <div class="reward-info">
+
+                    <div>
+
+                        <small>
+                            DEMO REWARD
+                        </small>
+
+                        <h2>
+                            100 Diamonds
+                        </h2>
+
+                        <p>
+                            Event reward
+                        </p>
+
+                    </div>
+
+                    <div class="select-circle">
+                        ✓
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================
+                 1000 DIAMONDS
+                 ================================= -->
+
+            <article class="reward-option" data-reward="500 Diamonds" data-type="diamonds">
+
+                <div class="reward-image diamonds large">
+                    <img src="images/dias.png" alt="1000 Diamonds">
+                    <div class="rarity-label">PREMIUM</div>
+                </div>
+
+
+                <div class="reward-info">
+
+                    <div>
+
+                        <small>
+                            DEMO REWARD
+                        </small>
+
+                        <h2>
+                            500 Diamonds
+                        </h2>
+
+                        <p>
+                            Event reward
+                        </p>
+
+                    </div>
+
+                    <div class="select-circle">
+                        ✓
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================================
+             SELECTED REWARD
+             ===================================== -->
+
+        <section class="selected-panel">
+
+            <div class="selected-label">
+                SELECTED REWARD
+            </div>
+
+            <div id="selectedReward" class="selected-reward">
+                No reward selected
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CONTINUE BUTTON
+             ===================================== -->
+
+        <button id="continueBtn" class="continue-btn" type="button" disabled>
+
+            <span>
+                CONTINUE
+            </span>
+
+            <b>
+                ›
+            </b>
+
+        </button>
+
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+
+    <footer>
+
+        <img src="images/mobile.png" alt="Mobile Legends">
+
+        <span>
+            © Moonton
+        </span>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+         ========================================= -->
+
+    <script src="js/rewards.js"></script>
+
+</body>
+
+</html>
