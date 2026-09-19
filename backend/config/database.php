@@ -8,15 +8,17 @@ $password = getenv("DB_PASSWORD");
 
 try {
 
+    $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::MYSQL_ATTR_SSL_CA => "/etc/ssl/certs/ca-certificates.crt",
+        PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => true
+    ];
+
     $pdo = new PDO(
         "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4",
         $username,
-        $password
-    );
-
-    $pdo->setAttribute(
-        PDO::ATTR_ERRMODE,
-        PDO::ERRMODE_EXCEPTION
+        $password,
+        $options
     );
 
 } catch (PDOException $e) {
